@@ -13,19 +13,19 @@ var FormData = require('../lib/form-data').FormData;
 var testform = new FormData();
 testform.validat("name", 
    function(value,params){
-      if(value.length > 3) throw new Error('error!');   
+      if(value > 3) throw new Error('error!');   
       return true;              
    }, null, "hava error!")
    .convert('name','Int','Name int convert error!');
 
 app.post("/form",Builder(testform),function(req,res){
-    console.log(req.errmsg);
+    console.log(req.modeldata);
     res.send("haha");    
     
 });
 
 app.get("/form",Builder(testform),function(req,res){
-    console.log(req.errmsg);
+    console.log(req.modeldata);
     res.send("haha");    
     
 });
