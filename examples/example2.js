@@ -16,7 +16,7 @@ testform.validat("name",
       if(value.length > 3) throw new Error('error!');   
       return true;              
    }, null, "hava error!")
-   .convert('Int','Name int convert error!');
+   .convert('name','Int','Name int convert error!');
 
 app.post("/form",Builder(testform),function(req,res){
     console.log(req.errmsg);
