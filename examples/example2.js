@@ -16,7 +16,9 @@ testform.validat("name",
       if(value > 3) throw new Error('error!');   
       return true;              
    }, null, "hava error!")
-   .convert('name','Int','Name int convert error!');
+   .convert('name','Int','Name int convert error!')
+   .convert('float','Float','FfLOAT float 转换失败！')
+   .convert('bool','Boolean','BBBBB BLO 转换失败！');
 
 app.post("/form",Builder(testform),function(req,res){
     console.log(req.modeldata);
