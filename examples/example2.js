@@ -24,5 +24,11 @@ app.post("/form",Builder(testform),function(req,res){
     
 });
 
+app.get("/form",Builder(testform),function(req,res){
+    console.log(req.errmsg);
+    res.send("haha");    
+    
+});
+
 app.listen(3000);
 
