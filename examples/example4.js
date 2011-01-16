@@ -1,0 +1,35 @@
+// 我们来测试转换器的使用
+var express = require('express');
+var app = module.exports = express.createServer(require('connect-form')() , express.staticProvider(__dirname + '/public'), express.bodyDecoder(), express.cookieDecoder(), express.session(),function(req,res,next){
+    (req.header("content-length") > 2 * 1024 * 1024) ? req.destroy() :  next();
+});
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.register('.html', require('ejs'));
+
+var FormData = require('../lib/form-data');
+
+var form1 = new FormData(); 
+
+form1.convert("age","Int","年龄INt转换失败！");
+
+app.get("/vage",function(req,res){
+    res.render("age.html",{
+        layout:false,
+        err:req.session.errs
+    });
+});
+
+// 刚才是错误的，原因是因为没有加载 form1插件
+
+app.post("/age",form1.build(),function(req,res){
+    if(req.errmsg){
+        req.session.errs = req.errmsg["age"];
+        res.redirect("/vage");
+    }else{
+        res.send("age 转换成功！");
+    }
+});
+
+app.listen(3000);

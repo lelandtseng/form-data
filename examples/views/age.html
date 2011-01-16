@@ -1,0 +1,11 @@
+<body>
+<font color="red">
+    <% if(!(typeof err === "undefined")){ %>
+    <%= err %>
+    <% } %>
+</font>
+    <form action="/age" method="post">
+        <input type="text" name="age" />
+        <input type="submit"/>
+    </form>
+</body>
