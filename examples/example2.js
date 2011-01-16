@@ -7,8 +7,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.register('.html', require('ejs'));
 
-var Builder = require('../lib/form-data').Builder;
-var FormData = require('../lib/form-data').FormData;
+var FormData = require('../lib/form-data');
 
 var testform = new FormData();
 testform.validat("name", 
@@ -20,13 +19,13 @@ testform.validat("name",
    .convert('float','Float','FfLOAT float 转换失败！')
    .convert('bool','Boolean','BBBBB BLO 转换失败！');
 
-app.post("/form",Builder(testform),function(req,res){
+app.post("/form",testform.build(),function(req,res){
     console.log(req.modeldata);
     res.send("haha");    
     
 });
 
-app.get("/form",Builder(testform),function(req,res){
+app.get("/form",testform.build(),function(req,res){
     console.log(req.modeldata);
     res.send("haha");    
     

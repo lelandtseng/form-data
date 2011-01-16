@@ -1,0 +1,18 @@
+这个插件可以提供表单的数据转换/数据验证/数据模型
+
+    var FormData = require('form-data');
+    var formdata = new FormData();  
+
+    // 表单数据验证
+    formdata.validat(字段名,验证器名或验证器, 验证器参数数组 , 错误信息);
+
+    // 表单数据转换
+    formdata.convert(字段名,转换器名或转换器,错误信息);
+
+    // 数据建模 schema
+    formdata.schema([字段名1,字段名2....]);
+
+    // 生成connect插件
+    formdata.build();  // return  function(req,res,next) {...} 对象
+
+参看 example/example2.js 例子
