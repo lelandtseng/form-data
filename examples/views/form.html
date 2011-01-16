@@ -1,6 +1,12 @@
 <body>
+<font color="red">
+    <% if(!(typeof errmsg === "undefined")){ %>
+    <%= errmsg %>
+    <% } %>
+</font>
     <form action="/form" method="post">
-        <%= first %> + <%= second %> = <input type="text" name="validatnum" />
+        <%= first %> + <%= second %> = 
+        <input type="text" name="validatnum" />
         <input type="submit" />
     </form>
 </body>
