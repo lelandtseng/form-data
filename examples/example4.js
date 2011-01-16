@@ -10,14 +10,15 @@ app.register('.html', require('ejs'));
 
 var FormData = require('../lib/form-data');
 
-var form1 = new FormData(); 
+var form0 = new FormData();
 
+var form1 = new FormData(); 
+form1.validatnum(true," 验证码错误！ ");
 form1.convert("age","Int","年龄INt转换失败！");
 
-app.get("/vage",function(req,res){
+app.get("/vage",form0.build(),function(req,res){
     res.render("age.html",{
-        layout:false,
-        err:req.session.errs
+        layout:false
     });
 });
 
@@ -25,8 +26,9 @@ app.get("/vage",function(req,res){
 
 app.post("/age",form1.build(),function(req,res){
     if(req.errmsg){
-        req.session.errs = req.errmsg["age"];
-        res.redirect("/vage");
+        res.render("age.html",{
+            layout:false
+        });
     }else{
         res.send("age 转换成功！");
     }

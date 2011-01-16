@@ -23,15 +23,7 @@ testform2.validatnum(true," 验证码错误！ ");
 // 记住哦，testform1 用于生成验证码
 app.get("/form",testform1.build(),function(req,res){
     res.render("form.html",{
-        layout:false,
-        // 生成第一个验证数字
-        first:req.session.vnum.first,
-        // 第二个验证数字
-        second:req.session.vnum.second,
-        //我们添加一个错误提示信息
-        // 我们应该在下面的添加错误信息
-        errmsg:req.session.vnumerrmsg
-        // 让我们试试看
+        layout:false
     });   
 });
 
@@ -39,8 +31,9 @@ app.get("/form",testform1.build(),function(req,res){
 app.post("/form",testform2.build(),function(req,res){
     // 如果验证成功就不会有 req.errmsg对象
     if(req.errmsg){        
-        req.session.vnumerrmsg = req.errmsg['validatnum'];
-        res.redirect("/form"); // 验证失败会返回 /form 页面继续验证
+    res.render("form.html",{
+        layout:false
+    });   
         
     }else{
         res.send("ok!! success!!!"); // 这个表示验证成功！
