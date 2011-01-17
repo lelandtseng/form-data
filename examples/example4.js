@@ -14,7 +14,7 @@ var form0 = new FormData();
 
 var form1 = new FormData(); 
 form1.validatnum(true," 验证码错误！ ");
-form1.convert("age","Int","年龄INt转换失败！");
+form1.validat("age","isUrl",{},"URL地址不正确！");
 
 app.get("/vage",form0.build(),function(req,res){
     res.render("age.html",{
