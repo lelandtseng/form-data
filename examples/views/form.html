@@ -4,9 +4,10 @@
     <%= errmsg["validatnum"] %>
     <% } %>
 </font>
-    <form action="/form" method="post">
+    <form action="/form" method="post" enctype = "multipart/form-data">
         <%= validatnum.first %> + <%= validatnum.second %> = 
         <input type="text" name="validatnum" />
+        <input type="file" name="img" />
         <input type="submit" />
     </form>
 </body>

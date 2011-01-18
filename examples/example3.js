@@ -1,5 +1,5 @@
 var express = require('express');
-var app = module.exports = express.createServer(require('connect-form')() , express.staticProvider(__dirname + '/public'), express.bodyDecoder(), express.cookieDecoder(), express.session());
+var app = module.exports = express.createServer(require('connect-form')() , express.staticProvider(__dirname + '/public'), express.bodyDecoder(), express.cookieDecoder(), express.session({ secret: 'keyboard cat' }));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
