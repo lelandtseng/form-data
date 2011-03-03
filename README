@@ -1,4 +1,6 @@
 
+最近准备再次优化一下代码。
+
 version 1.0 beta
 
 这个插件可以提供表单的数据转换/数据验证/数据模型
@@ -18,7 +20,6 @@ version 1.0 beta
     // 生成connect插件
     formdata.build();  // return  function(req,res,next) {...} 对象
 
-参看 example/example2.js 例子
 
 
 
